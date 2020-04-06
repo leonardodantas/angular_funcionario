@@ -1,0 +1,22 @@
+<div class="container mt-3">
+  <div *ngIf="!funcoes" class="text-center mb-3">
+    <h3>Sem Funções Cadastradas</h3>
+  </div>
+
+  <table class="table-bordered table table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th>COD</th>
+        <th>Função</th>
+        <th>Salario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let func of funcoes">
+        <td> {{ func.id}}</td>
+        <td>{{ func.nomeFuncao | uppercase }}</td>
+        <td>{{ func.salarioBase | currency}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

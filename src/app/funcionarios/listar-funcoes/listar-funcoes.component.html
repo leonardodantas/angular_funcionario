@@ -1,0 +1,3 @@
+<app-menu-navbar></app-menu-navbar>
+<app-serach (onTyping)="filter = $event"></app-serach>
+<app-table-func [funcoes]="funcoes | filterByFuncao: filter"></app-table-func>

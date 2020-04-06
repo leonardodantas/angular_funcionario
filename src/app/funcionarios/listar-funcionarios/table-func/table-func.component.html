@@ -1,0 +1,24 @@
+<div class="container mt-3">
+  <div *ngIf="!funcionarios" class="text-center mb-3">
+    <h3>Sem Funcionarios Cadastrados</h3>
+  </div>
+
+  <table class="table-bordered table table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Data Nascimento</th>
+        <th>Função</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let func of funcionarios">
+        <td> {{ func.nome}}</td>
+        <td>{{ func.email}}</td>
+        <td>{{ func.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+        <td>{{ func.funcao}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

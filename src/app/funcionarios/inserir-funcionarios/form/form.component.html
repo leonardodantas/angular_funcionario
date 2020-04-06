@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>Inserir Funcionario</h1>
+  <app-alert-success *ngIf="inseridoSucesso" mensagem="Funcionario inserido com sucesso"></app-alert-success>
+  <app-alert-error *ngIf="inseridoFalha" mensagem="Erro ao inserir Funcionario"></app-alert-error>
+  <form [formGroup]="funcionarioForm" (submit)="inserirFuncionario()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nome">Nome</label>
+        <input type="text" formControlName="nome" class="form-control" id="nome">
+        <app-validar *ngIf="funcionarioForm.get('nome').invalid && funcionarioForm.get('nome').touched" 
+          mensagem="Minino de 2 e Maximo de 40">
+        </app-validar>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword">Email</label>
+        <input type="email" class="form-control" formControlName="email" id="inputPassword">
+        <app-validar *ngIf="funcionarioForm.get('email').invalid && funcionarioForm.get('email').touched" 
+          mensagem="Minino de 6 e Maximo de 40">
+        </app-validar>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="cpf">CPF</label>
+        <input type="text" class="form-control" formControlName="cpf" id="cpf">
+        <app-validar *ngIf="funcionarioForm.get('cpf').invalid && funcionarioForm.get('cpf').touched" 
+          mensagem="Minino de 11">
+        </app-validar>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="dataNascimento">Data Nascimento</label>
+        <input type="date" class="form-control" formControlName="dataNascimento" id="dataNascimento">
+        <app-validar *ngIf="funcionarioForm.get('dataNascimento').invalid && funcionarioForm.get('dataNascimento').touched" 
+          mensagem="Campo Obrigatorio">
+        </app-validar>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="funcoes">Funções</label>
+        <select id="funcoes" class="form-control" formControlName="idFuncao">
+          <option *ngFor="let funcao of funcoes" [value]="funcao.id">{{funcao.nomeFuncao}}</option>
+        </select>
+        <app-validar *ngIf="funcionarioForm.get('idFuncao').invalid && funcionarioForm.get('idFuncao').touched" 
+          mensagem="Campo Obrigatorio">
+        </app-validar>
+      </div>
+    </div>
+
+
+    <button type="submit" [disabled]="funcionarioForm.invalid" class="btn btn-dark">Inserir Funcionario</button>
+  </form>
+</div>

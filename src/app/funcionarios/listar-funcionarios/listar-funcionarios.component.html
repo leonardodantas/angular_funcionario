@@ -1,0 +1,4 @@
+<app-menu-navbar></app-menu-navbar>
+<app-search-funcionarios (onTyping)="filter = $event" ></app-search-funcionarios>
+<app-table-func [funcionarios]="funcionarios | filterByNome: filter"  ></app-table-func>
+<app-paginacao (click)="paginacao()"></app-paginacao> 
